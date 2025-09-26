@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/app/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/app/components/ui/sheet';
-import { Menu, Search, ShoppingCart, User } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/app/components/ui/sheet';
+import { Menu, Search, ShoppingCart, User, ChevronDown, ChevronRight } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const navigationItems = [
     {
@@ -155,18 +156,77 @@ export default function Header() {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-80">
-                <div className="py-4">
-                  <h2 className="text-lg font-semibold mb-4">Menu</h2>
-                  <nav className="space-y-4">
+              <SheetContent side="left" className="w-80 bg-white flex flex-col p-0">
+                {/* Fixed Header */}
+                <div className="px-6 py-4">
+                  <SheetTitle>Menu</SheetTitle>
+                </div>
+                
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto px-6 py-4">
+                  <nav className="space-y-1">
                     {navigationItems.map((item) => (
                       <div key={item.title}>
-                        <a
-                          href={item.href}
-                          className="block text-brand-dark hover:text-brand-muted-purple py-2"
-                        >
-                          {item.title}
-                        </a>
+                        {item.submenu ? (
+                          <>
+                            <button
+                              onClick={() => {
+                                if (expandedItems.includes(item.title)) {
+                                  setExpandedItems(expandedItems.filter(i => i !== item.title));
+                                } else {
+                                  setExpandedItems([...expandedItems, item.title]);
+                                }
+                              }}
+                              className="w-full flex items-center justify-between text-brand-dark hover:text-brand-muted-purple py-3 transition-colors"
+                            >
+                              <span>{item.title}</span>
+                              {expandedItems.includes(item.title) ? (
+                                <ChevronDown className="h-4 w-4" />
+                              ) : (
+                                <ChevronRight className="h-4 w-4" />
+                              )}
+                            </button>
+                            {expandedItems.includes(item.title) && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="overflow-hidden"
+                              >
+                                <div className="pl-4 pb-2 space-y-2">
+                                  {item.submenu.map((section) => (
+                                    <div key={section.title}>
+                                      <p className="text-xs font-semibold text-brand-grey uppercase mb-2">
+                                        {section.title}
+                                      </p>
+                                      <div className="space-y-1">
+                                        {section.items.map((subItem) => (
+                                          <a
+                                            key={subItem.title}
+                                            href={subItem.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="block text-sm text-brand-dark hover:text-brand-muted-purple py-1 pl-2 transition-colors"
+                                          >
+                                            {subItem.title}
+                                          </a>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </>
+                        ) : (
+                          <a
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className="w-full text-left block text-brand-dark hover:text-brand-muted-purple py-3 transition-colors"
+                          >
+                            {item.title}
+                          </a>
+                        )}
                       </div>
                     ))}
                   </nav>
