@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/app/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/app/components/ui/sheet';
@@ -82,13 +83,15 @@ export default function Header() {
 
             {/* Logo */}
             <div className="flex-1 flex justify-center">
-              <motion.h1
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="text-2xl font-light tracking-[0.3em] text-brand-dark cursor-pointer"
-              >
-                EJIRO AMOS TAFIRI
-              </motion.h1>
+              <Link href="/">
+                <motion.h1
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-2xl font-light tracking-[0.3em] text-brand-dark cursor-pointer"
+                >
+                  EJIRO AMOS TAFIRI
+                </motion.h1>
+              </Link>
             </div>
 
             {/* Icons */}
@@ -115,12 +118,14 @@ export default function Header() {
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Button
-                    variant="ghost"
-                    className="text-sm font-medium text-brand-dark hover:text-brand-muted-purple px-0 transition-colors duration-300"
-                  >
-                    {item.title}
-                  </Button>
+                  <Link href={item.href || '#'}>
+                    <Button
+                      variant="ghost"
+                      className="text-sm font-medium text-brand-dark hover:text-brand-muted-purple px-0 transition-colors duration-300"
+                    >
+                      {item.title}
+                    </Button>
+                  </Link>
                   {item.submenu && (
                     <div className="absolute top-full left-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 pt-2">
                       <div className="bg-white shadow-lg border border-gray-100 rounded-sm min-w-[200px]">
@@ -131,13 +136,13 @@ export default function Header() {
                             </h4>
                             <div className="space-y-1">
                               {section.items.map((subItem) => (
-                                <a
+                                <Link
                                   key={subItem.title}
                                   href={subItem.href}
                                   className="block text-sm text-brand-dark hover:text-brand-muted-purple py-1"
                                 >
                                   {subItem.title}
-                                </a>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -204,14 +209,14 @@ export default function Header() {
                                       </p>
                                       <div className="space-y-1">
                                         {section.items.map((subItem) => (
-                                          <a
+                                          <Link
                                             key={subItem.title}
                                             href={subItem.href}
                                             onClick={() => setIsOpen(false)}
                                             className="block text-sm text-brand-dark hover:text-brand-muted-purple py-1 pl-2 transition-colors"
                                           >
                                             {subItem.title}
-                                          </a>
+                                          </Link>
                                         ))}
                                       </div>
                                     </div>
@@ -221,13 +226,13 @@ export default function Header() {
                             )}
                           </>
                         ) : (
-                          <a
-                            href={item.href}
+                          <Link
+                            href={item.href || '#'}
                             onClick={() => setIsOpen(false)}
                             className="w-full text-left block text-brand-dark hover:text-brand-muted-purple py-3 transition-colors"
                           >
                             {item.title}
-                          </a>
+                          </Link>
                         )}
                       </div>
                     ))}
@@ -236,9 +241,11 @@ export default function Header() {
               </SheetContent>
             </Sheet>
 
-            <h1 className="text-lg font-light tracking-[0.2em] text-brand-dark">
-              EJIRO AMOS TAFIRI
-            </h1>
+            <Link href="/">
+              <h1 className="text-lg font-light tracking-[0.2em] text-brand-dark cursor-pointer">
+                EJIRO AMOS TAFIRI
+              </h1>
+            </Link>
 
             <div className="flex items-center space-x-2">
               <Button variant="ghost" size="icon" className="text-brand-grey">
