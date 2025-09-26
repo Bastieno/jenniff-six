@@ -64,7 +64,7 @@ export default function Header() {
     },
     { title: "EAT SDN", href: "/eat-sdn" },
     { title: "ABOUT US", href: "/about-us" },
-    { title: "CONTACT", href: "/contact" },
+    { title: "CONTACT", href: "/contact-us" },
   ];
 
   return (
