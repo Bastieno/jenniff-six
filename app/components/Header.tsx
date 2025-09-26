@@ -12,56 +12,58 @@ export default function Header() {
 
   const navigationItems = [
     {
-      title: 'SHOP',
-      href: '/shop',
+      title: "SHOP",
+      href: "/shop",
       submenu: [
         {
-          title: 'BY CATEGORY',
+          title: "BY CATEGORY",
           items: [
-            { title: 'DRESSES', href: '/category/dresses' },
-            { title: 'Female Category', href: '/category/female' },
-            { title: 'Male Category', href: '/category/male' },
-            { title: 'SETS', href: '/category/sets' },
-            { title: 'KAFTAN', href: '/category/kaftan' },
-          ]
+            { title: "Dresses", href: "/category/dresses" },
+            { title: "Female Category", href: "/category/female" },
+            { title: "Male Category", href: "/category/male" },
+            { title: "Sets", href: "/category/sets" },
+            { title: "Kaftan", href: "/category/kaftan" },
+          ],
         },
         {
-          title: 'BY COLLECTION',
+          title: "BY COLLECTION",
           items: [
-            { title: 'SS25', href: '/collection/ss25' },
-            { title: 'SS 24', href: '/collection/ss24' },
-            { title: 'SS 23', href: '/collection/ss23' },
-            { title: 'SS 22', href: '/collection/ss22' },
-            { title: 'SS 21', href: '/collection/ss21' },
-          ]
-        }
-      ]
+            { title: "SS25", href: "/collection/ss25" },
+            { title: "SS 24", href: "/collection/ss24" },
+            { title: "SS 23", href: "/collection/ss23" },
+            { title: "SS 22", href: "/collection/ss22" },
+            { title: "SS 21", href: "/collection/ss21" },
+          ],
+        },
+      ],
     },
     {
-      title: 'COLLECTIONS',
-      href: '/collections',
+      title: "COLLECTIONS",
+      href: "/collections",
       submenu: [
         {
-          title: 'LOOK BOOKS',
+          title: "LOOK BOOKS",
           items: [
-            { title: 'SS24 LOOKBOOK', href: '/lookbook/ss24' },
-            { title: 'SS 23 Il mi, Il mi', href: '/lookbook/ss23' },
-            { title: 'SS 22 Retrospect', href: '/lookbook/ss22' },
-          ]
+            { title: "All Look Books", href: "/look-books" },
+            { title: "Resort 2024", href: "/look-books/resort-2024" },
+            { title: "SS24 Urban Minimalism", href: "/look-books/ss-2024" },
+            { title: "FW23 Monochrome Dreams", href: "/look-books/fw-2023" },
+            { title: "SS23 Modern Looks", href: "/look-books/ss-2023" },
+          ],
         },
         {
-          title: 'RUNWAY',
+          title: "RUNWAY",
           items: [
-            { title: 'SS25 RUNWAY', href: '/runway/ss25' },
-            { title: 'SS 23 Il mi, Il mi', href: '/runway/ss23' },
-            { title: 'SS 22 Retrospect', href: '/runway/ss22' },
-          ]
-        }
-      ]
+            { title: "SS25 RUNWAY", href: "/runway/ss25" },
+            { title: "SS 23 Modern Looks", href: "/runway/ss23" },
+            { title: "SS 22 Retrospect", href: "/runway/ss22" },
+          ],
+        },
+      ],
     },
-    { title: 'EAT SDN', href: '/eat-sdn' },
-    { title: 'CUSTOM ORDER', href: '/custom-order' },
-    { title: 'CONTACT', href: '/contact' },
+    { title: "EAT SDN", href: "/eat-sdn" },
+    { title: "ABOUT US", href: "/about-us" },
+    { title: "CONTACT", href: "/contact" },
   ];
 
   return (

@@ -1,43 +1,6 @@
-// import type { Metadata } from "next";
-// import { Inter, Poppins } from "next/font/google";
-// import "./globals.css";
-
-// const inter = Inter({
-//   subsets: ["latin"],
-//   variable: "--font-inter",
-// });
-
-// const poppins = Poppins({
-//   subsets: ["latin"],
-//   weight: ["300", "400", "500", "600", "700", "800", "900"],
-//   variable: "--font-poppins",
-// });
-
-// export const metadata: Metadata = {
-//   title: "Ejiro Amostafiri - Portfolio",
-//   description: "Professional portfolio website showcasing projects and skills",
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="en">
-//       <body
-//         className={`${inter.variable} ${poppins.variable} font-sans antialiased`}
-//       >
-//         {children}
-//       </body>
-//     </html>
-//   );
-// }
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import Script from "next/script";
 import ClientBody from "./components/ClientBody";
 
 const geistSans = Geist({
@@ -63,13 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      {/* <head>
-        <Script
-          crossOrigin="anonymous"
-          src="//unpkg.com/same-runtime/dist/index.global.js"
-        />
-      </head> */}
-      <body suppressHydrationWarning className="antialiased">
+      <body suppressHydrationWarning className={`${geistSans.className} antialiased`}>
         <ClientBody>{children}</ClientBody>
       </body>
     </html>
