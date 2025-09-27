@@ -1,25 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/app/components/ui/button";
+import Link from "next/link";
 
 export default function ProductCategories() {
   const categories = [
     {
       title: "BOUBOU",
       image: "https://ext.same-assets.com/2272108455/1581875077.jpeg",
-      href: "/shop/boubou",
+      href: "/shop",
     },
     {
       title: "CLASSICS",
       image:
         "https://ejiroamostafiri.com/wp-content/uploads/2025/09/OS_8714.jpg",
-      href: "/shop/classics",
+      href: "/shop",
     },
     {
       title: "SETS",
       image: "https://ext.same-assets.com/2272108455/395474336.jpeg",
-      href: "/shop/sets",
+      href: "/shop",
     },
   ];
 
@@ -47,10 +47,10 @@ export default function ProductCategories() {
   } as const;
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -59,63 +59,29 @@ export default function ProductCategories() {
           {categories.map((category, index) => (
             <motion.div
               key={category.title}
-              className="group relative overflow-hidden"
               variants={itemVariants}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.4, ease: "easeOut" as const }}
             >
-              {/* Image Container */}
-              <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
-                <motion.img
-                  src={category.image}
-                  alt={category.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 0.6, ease: "easeOut" as const }}
-                />
-
-                {/* Overlay */}
-                <motion.div
-                  className="absolute inset-0 bg-black/40"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                ></motion.div>
-
-                {/* Category Title - Always Visible */}
-                <motion.div
-                  className="absolute top-8 left-8"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-                >
-                  <h3 className="text-3xl font-light text-white tracking-wider">
-                    {category.title}
-                  </h3>
-                </motion.div>
-
-                {/* View Button - Shows on Hover */}
-                <motion.div
-                  className="absolute bottom-8 left-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileHover={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div
+              <Link href={category.href} className="group block">
+                <div className="relative aspect-[3/4 overflow-hidden bg-gray-100">
+                  <motion.img
+                    src={category.image}
+                    alt={category.title}
+                    className="w-full h-full object-cover"
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <a href={category.href}>
-                      <Button
-                        variant="outline"
-                        className="bg-transparent border-white text-white hover:bg-white hover:text-brand-dark px-8 py-3 transition-all duration-300"
-                      >
-                        VIEW
-                      </Button>
-                    </a>
-                  </motion.div>
-                </motion.div>
-              </div>
+                    transition={{ duration: 0.6, ease: "easeOut" as const }}
+                  />
+                  
+                  {/* Bottom text overlay - always visible */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                    <h3 className="text-2xl font-light text-white tracking-wider mb-2">
+                      {category.title}
+                    </h3>
+                    <span className="text-sm text-white/90 uppercase tracking-wide group-hover:underline">
+                      Shop Now →
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
