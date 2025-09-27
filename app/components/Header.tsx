@@ -86,6 +86,10 @@ export default function Header() {
       href: "/collections",
       submenu: [
         {
+          title: "COLLECTIONS",
+          items: [{ title: "All Collections", href: "/collections" }],
+        },
+        {
           title: "LOOK BOOKS",
           items: [
             { title: "All Look Books", href: "/look-books" },
