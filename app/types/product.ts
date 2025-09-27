@@ -2,6 +2,7 @@ export interface Product {
   id: string;
   name: string;
   category: "boubou" | "classics" | "sets" | "kaftan" | "dresses";
+  gender?: "male" | "female" | "unisex";
   collection: string;
   price: number;
   currency: "USD" | "NGN";
