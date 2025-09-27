@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
@@ -20,6 +21,12 @@ export default function Header() {
   const { currency, setCurrency } = useCurrency();
   const desktopCurrencyRef = useRef<HTMLDivElement>(null);
   const mobileCurrencyRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  const isActive = (href?: string) => {
+    if (!href) return false;
+    return pathname === href || pathname.startsWith(href + "/");
+  };
 
   // Handle outside clicks for currency dropdown
   useEffect(() => {
@@ -104,12 +111,7 @@ export default function Header() {
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="border-b border-gray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95"
-    >
+    <header className="border-b border-gray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
       <div className="px-4">
         {/* Desktop Header */}
         <div className="hidden lg:flex items-center justify-between py-4">
@@ -185,7 +187,11 @@ export default function Header() {
                 <Link href={item.href || "#"}>
                   <Button
                     variant="ghost"
-                    className="text-sm font-medium text-brand-dark hover:text-brand-muted-purple px-0 transition-colors duration-300"
+                    className={`text-sm font-medium px-0 transition-colors duration-300
+                      ${isActive(item.href)
+                        ? "text-brand-muted-purple underline underline-offset-4"
+                        : "text-brand-dark hover:text-brand-muted-purple"}
+                    `}
                   >
                     {item.title}
                   </Button>
@@ -206,7 +212,11 @@ export default function Header() {
                               <Link
                                 key={subItem.title}
                                 href={subItem.href}
-                                className="block text-sm text-brand-dark hover:text-brand-muted-purple py-1"
+                                className={`block text-sm py-1 transition-colors
+                                  ${pathname === subItem.href
+                                    ? "text-brand-muted-purple font-semibold"
+                                    : "text-brand-dark hover:text-brand-muted-purple"}
+                                `}
                               >
                                 {subItem.title}
                               </Link>
@@ -296,7 +306,11 @@ export default function Header() {
                                             key={subItem.title}
                                             href={subItem.href}
                                             onClick={() => setIsOpen(false)}
-                                            className="block text-sm text-brand-dark hover:text-brand-muted-purple py-1 pl-2 transition-colors"
+                                            className={`block text-sm py-1 pl-2 transition-colors
+                                              ${pathname === subItem.href
+                                                ? "text-brand-muted-purple font-semibold"
+                                                : "text-brand-dark hover:text-brand-muted-purple"}
+                                            `}
                                           >
                                             {subItem.title}
                                           </Link>
@@ -312,7 +326,11 @@ export default function Header() {
                           <Link
                             href={item.href || "#"}
                             onClick={() => setIsOpen(false)}
-                            className="w-full text-left block text-brand-dark hover:text-brand-muted-purple py-3 transition-colors"
+                            className={`w-full text-left block py-3 transition-colors
+                              ${isActive(item.href)
+                                ? "text-brand-muted-purple font-semibold"
+                                : "text-brand-dark hover:text-brand-muted-purple"}
+                            `}
                           >
                             {item.title}
                           </Link>
@@ -380,6 +398,6 @@ export default function Header() {
           </Link>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }
