@@ -10,11 +10,7 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/app/components/ui/sheet";
-import {
-  Menu,
-  ChevronDown,
-  ChevronRight,
-} from "lucide-react";
+import { Menu, ChevronDown, ChevronRight } from "lucide-react";
 import { useCurrency } from "@/app/contexts/CurrencyContext";
 
 export default function Header() {
@@ -29,7 +25,7 @@ export default function Header() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
-      
+
       // Check if click is outside both desktop and mobile currency selectors
       if (
         currencyDropdownOpen &&
@@ -44,7 +40,7 @@ export default function Header() {
 
     // Add event listener
     document.addEventListener("mousedown", handleClickOutside);
-    
+
     // Cleanup
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -102,7 +98,7 @@ export default function Header() {
         },
       ],
     },
-    { title: "EAT SDN", href: "/eat-sdn" },
+    { title: "SDN", href: "/jn-sdn" },
     { title: "ABOUT US", href: "/about-us" },
     { title: "CONTACT", href: "/contact-us" },
   ];
@@ -170,7 +166,7 @@ export default function Header() {
                 transition={{ duration: 0.3 }}
                 className="text-2xl font-light tracking-[0.3em] text-brand-dark cursor-pointer"
               >
-                Francis Nduamaka
+                Jenniff 6
               </motion.h1>
             </Link>
           </div>
@@ -231,8 +227,8 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="icon"
                   onClick={() => setIsOpen(true)}
                   className="relative z-10"
@@ -374,9 +370,12 @@ export default function Header() {
             </div>
           </div>
 
-          <Link href="/" className="flex-1 flex md:ml-[-100px] ml-[-32px] justify-center">
+          <Link
+            href="/"
+            className="flex-1 flex md:ml-[-100px] ml-[-32px] justify-center"
+          >
             <h1 className="text-lg font-light tracking-[0.2em] text-brand-dark cursor-pointer">
-              Francis Nduamaka
+              Jenniff 6
             </h1>
           </Link>
         </div>

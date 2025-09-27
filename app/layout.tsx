@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Francis Nduamaka - Luxury Fashion Brand",
+  title: "Jenniff 6 - Luxury Fashion Brand",
   description:
-    "The Francis Nduamaka brand is a woman's best friend; it celebrates the sophistication, class and uniqueness of every woman.",
+    "The Jenniff 6 brand is a woman's best friend; it celebrates the sophistication, class and uniqueness of every woman.",
 };
 
 export default function RootLayout({

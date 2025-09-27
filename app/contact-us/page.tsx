@@ -183,7 +183,7 @@ export default function ContactPage() {
                       <p>100001</p>
                     </address>
                     <a
-                      href="https://www.google.com/maps/search/?api=1&query=3.4006833,6.4481155"
+                      href="https://www.google.com/maps/search/?api=1&query=3.3578,6.6738"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block mt-3 text-sm text-blue-600 hover:text-blue-800 underline transition-colors"

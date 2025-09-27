@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="py-6 px-4">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-brand-grey text-sm">
-            ©{year} Francis Nduamaka. All rights reserved
+            ©{year} Jenniff 6. All rights reserved
           </p>
 
           <div className="flex items-center">

@@ -6,7 +6,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import Image from "next/image";
 
-export default function EatSdnPage() {
+export default function SdnPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -63,38 +63,37 @@ export default function EatSdnPage() {
         >
           <div className="max-w-7xl mx-auto">
             <h1 className="text-5xl sm:text-6xl lg:text-[5rem] xl:text-[6rem] font-bold tracking-tight text-black leading-[0.9] mb-12">
-              FRANCIS NDUAMAKA
+              Jenniff 6
               <br />
               SCHOOL OF DESIGN
             </h1>
 
-            <div className="mb-16">
-              <p className="text-xl lg:text-2xl font-bold text-black mb-2">
-                Currently on hold and would be back better in October 2025.
-              </p>
-            </div>
-
             <div className="space-y-8 text-base lg:text-lg text-gray-800 leading-relaxed max-w-5xl">
               <p>
-                Francis Nduamaka School of Design (EATSDN) is a home ground for
-                fashion industry hopefuls. We offer an invasive practical real
-                world sphere of learning while making all efforts to provide you
-                only useful, necessary and practical information at the highest
-                instructional levels.
+                Jenniff 6 School of Design (JNSDN) is more than a fashion
+                school—it is a launchpad for ambitious creators who want to
+                shape the future of the fashion industry. We immerse our
+                students in a dynamic, real-world learning environment, focusing
+                only on what is practical, essential, and transformative at the
+                highest level of instruction.
               </p>
               <p>
-                Francis Nduamaka educates and trains students with a knowledge
-                base that will set you ahead. We have a goal to build a
-                generation of educated, seasoned and professional fashion
-                entrepreneurs each student per time
+                At Jenniff 6, we don't just teach fashion—we cultivate
+                visionaries. Our mission is to equip every student with the
+                knowledge, confidence, and entrepreneurial mindset needed to
+                lead with distinction. We are committed to raising a generation
+                of educated, innovative, and professional fashion entrepreneurs,
+                one student at a time.
               </p>
               <p>
-                At EATSDN You will find that members of our faculty led by the
-                Founder and Creative Director Francis Nduamaka; continue to work
-                in the aspects they train students in. Our industry connected
-                and academically trained tutors have experienced first hand the
-                benefits of fashion education and devote to lending a hand to
-                hone your skills. This is the foundation we are building on.
+                At JNSDN, you will learn from faculty who don't just
+                lecture—they lead by example. Guided by our Founder and Creative
+                Director, Jenniff 6, our tutors remain active professionals in
+                the very fields they teach. Their industry expertise, combined
+                with academic rigor, ensures you receive the mentorship and
+                hands-on training needed to sharpen your skills and excel. This
+                is the legacy we are building—a community where talent becomes
+                mastery, and passion becomes profession.
               </p>
             </div>
           </div>
@@ -220,11 +219,14 @@ export default function EatSdnPage() {
             </h2>
 
             <p className="text-base lg:text-lg text-gray-800 leading-relaxed mb-16 max-w-5xl">
-              We have a responsive curriculum and accelerated programs which can
-              help you jump-start a career in fashion in Nigeria or anywhere
-              else. With properly constructed outlines in addition to expertise
-              in what and how we teach, your education is hands-on, interactive,
-              relevant and will produce results.
+              Our curriculum is responsive, forward-thinking, and designed to
+              move you from passion to profession with speed and precision.
+              Through accelerated programs and expertly crafted course outlines,
+              we provide an education that is hands-on, interactive, and
+              globally relevant—whether you aim to launch your career in Nigeria
+              or make your mark on the international fashion stage. At JNSDN,
+              every lesson is designed to deliver real results and lasting
+              impact.
             </p>
 
             <div className="space-y-16">
@@ -299,19 +301,16 @@ export default function EatSdnPage() {
             <div className="space-y-4 text-base lg:text-lg text-gray-800">
               <p>Contact us via email or Telephone</p>
               <p className="font-semibold text-black">
-                <a href="tel:09099877279" className="hover:underline">
-                  09099877279
+                <a href="tel:08028474418" className="hover:underline">
+                  08028474418
                 </a>{" "}
                 or{" "}
-                <a
-                  href="mailto:sdn@ejiroamostairi.com"
-                  className="hover:underline"
-                >
-                  sdn@ejiroamostairi.com
+                <a href="mailto:jenniff6@gmail.com" className="hover:underline">
+                  jenniff6@gmail.com
                 </a>
               </p>
               <p>
-                Or visit us at 9A, Adeboye Solanke off Allen Avenue, Ikeja
+                Or visit us at 40, Ayodele Fanoiki Street, Isheri, Magodo,
                 Lagos.
               </p>
             </div>
