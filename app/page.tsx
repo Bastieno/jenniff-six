@@ -11,7 +11,6 @@ export default function Home() {
       <main>
         <HeroSection />
         <ProductCategories />
-        <Newsletter />
       </main>
       <Footer />
     </div>

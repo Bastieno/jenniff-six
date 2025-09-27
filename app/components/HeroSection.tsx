@@ -1,20 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import EmailSignupModal from "./EmailSignupModal";
-
 export default function HeroSection() {
-  const [showModal, setShowModal] = useState(false);
-
-  // Auto-show modal after a delay (like the original site)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <section className="relative h-screen overflow-hidden">
@@ -38,9 +24,6 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-
-      {/* Email Signup Modal */}
-      <EmailSignupModal open={showModal} onOpenChange={setShowModal} />
     </>
   );
 }
