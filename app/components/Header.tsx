@@ -6,10 +6,13 @@ import { motion } from 'framer-motion';
 import { Button } from '@/app/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/app/components/ui/sheet';
 import { Menu, Search, ShoppingCart, User, ChevronDown, ChevronRight } from 'lucide-react';
+import { useCurrency } from '@/app/contexts/CurrencyContext';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [currencyDropdownOpen, setCurrencyDropdownOpen] = useState(false);
+  const { currency, setCurrency } = useCurrency();
 
   const navigationItems = [
     {
@@ -77,8 +80,44 @@ export default function Header() {
           {/* Desktop Header */}
           <div className="hidden lg:flex items-center justify-between py-4">
             {/* Currency Selector */}
-            <div className="flex items-center space-x-2 text-sm text-brand-grey">
-              <span>USD</span>
+            <div className="relative">
+              <button
+                onClick={() => setCurrencyDropdownOpen(!currencyDropdownOpen)}
+                className="flex items-center space-x-1 text-sm text-brand-grey hover:text-brand-dark transition-colors"
+              >
+                <span>{currency}</span>
+                <ChevronDown className="h-3 w-3" />
+              </button>
+              {currencyDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-100 rounded-sm min-w-[80px] z-50"
+                >
+                  <button
+                    onClick={() => {
+                      setCurrency('NGN');
+                      setCurrencyDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 ${
+                      currency === 'NGN' ? 'text-brand-dark font-medium' : 'text-brand-grey'
+                    }`}
+                  >
+                    NGN
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCurrency('USD');
+                      setCurrencyDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-50 ${
+                      currency === 'USD' ? 'text-brand-dark font-medium' : 'text-brand-grey'
+                    }`}
+                  >
+                    USD
+                  </button>
+                </motion.div>
+              )}
             </div>
 
             {/* Logo */}
@@ -157,7 +196,8 @@ export default function Header() {
 
           {/* Mobile Header */}
           <div className="lg:hidden flex items-center justify-between py-4">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <div className="flex items-center space-x-4">
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
@@ -240,6 +280,48 @@ export default function Header() {
                 </div>
               </SheetContent>
             </Sheet>
+
+            {/* Mobile Currency Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setCurrencyDropdownOpen(!currencyDropdownOpen)}
+                className="flex items-center space-x-1 text-xs text-brand-grey"
+              >
+                <span>{currency}</span>
+                <ChevronDown className="h-3 w-3" />
+              </button>
+              {currencyDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-100 rounded-sm min-w-[60px] z-50"
+                >
+                  <button
+                    onClick={() => {
+                      setCurrency('NGN');
+                      setCurrencyDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-2 py-1 text-xs hover:bg-gray-50 ${
+                      currency === 'NGN' ? 'text-brand-dark font-medium' : 'text-brand-grey'
+                    }`}
+                  >
+                    NGN
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCurrency('USD');
+                      setCurrencyDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-2 py-1 text-xs hover:bg-gray-50 ${
+                      currency === 'USD' ? 'text-brand-dark font-medium' : 'text-brand-grey'
+                    }`}
+                  >
+                    USD
+                  </button>
+                </motion.div>
+              )}
+            </div>
+            </div>
 
             <Link href="/">
               <h1 className="text-lg font-light tracking-[0.2em] text-brand-dark cursor-pointer">
